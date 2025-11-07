@@ -1,0 +1,15 @@
+# Future Feature Ideas for OpnPage
+
+- Reading Nook: Dedicated space for book lovers to track reading progress, favorite books, reviews, and connect with other readers.
+- Gamer Lounge: Gaming-focused dashboard for tracking playtime, achievements, favorite games, and sharing gaming stats.
+- Lifting Zone: Fitness area for weightlifters to log workouts, track PRs, routines, and progress photos.
+- Runners Hideaway: Running-specific section for tracking miles, routes, races, goals, and connecting with fellow runners.
+- More specialized zones for other hobbies and interests as user demand grows.
+
+## Strategy
+- Launch core dashboard first to gather feedback.
+- Expand with these specialized sections based on user interest and feedback.
+- Prioritize features that users request most.
+
+---
+Add more ideas here as inspiration strikes!

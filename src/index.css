@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-brand-gray;
+  }
+
+  body {
+    @apply bg-brand-beige text-brand-navy font-sans antialiased duration-200;
+    zoom: 0.65;
+  }
+
+  body.dark {
+    @apply bg-brand-navy-dark text-brand-text-dark;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl lg:text-[4.5rem] leading-[1.1] tracking-tight;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl leading-[1.2] tracking-tight;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl leading-[1.3];
+  }
+
+  p {
+    @apply leading-[1.7] text-brand-navy/80;
+  }
+}
+
+@layer components {
+  /* Skip link for accessibility */
+  .skip-link {
+    @apply absolute left-0 top-0 bg-brand-navy text-white px-16 py-8 transform -translate-y-full focus:translate-y-0 transition-transform z-50;
+  }
+
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center justify-center px-32 py-16 rounded-lg font-medium tracking-wide transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-brand-orange text-white hover:bg-[#d94f04] focus:ring-brand-orange shadow-subtle hover:shadow-card hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-brand-navy border-2 border-brand-gray hover:border-brand-navy focus:ring-brand-navy shadow-subtle hover:shadow-card hover:-translate-y-0.5;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-xl p-32 shadow-card hover:shadow-lifted transition-all duration-300;
+  }
+
+  .dark .card {
+    @apply bg-brand-gray-dark shadow-dark-card hover:shadow-dark-lifted;
+  }
+
+  /* Card hover lift effect */
+  .card-hover {
+    @apply transition-all duration-200 hover:scale-[1.02] hover:-translate-y-1;
+  }
+
+  /* Card variants for 12-column grid */
+  .card--compact {
+    @apply card p-16;
+  }
+
+  .card--wide {
+    @apply card col-span-8;
+  }
+
+  .card--tall {
+    @apply card min-h-96;
+  }
+
+  /* Stat chip for overview strip */
+  .chip {
+    @apply bg-white dark:bg-brand-gray-dark rounded-lg p-16 border border-brand-gray/30 dark:border-brand-gray-dark/30 shadow-subtle dark:shadow-dark-subtle hover:scale-[1.01] transition-all duration-200;
+  }
+
+  /* Fade-in animation */
+  .fade-in {
+    animation: fadeIn 0.6s ease-in forwards;
+    opacity: 0;
+  }
+
+  .fade-in-delay-1 {
+    animation-delay: 0.1s;
+  }
+
+  .fade-in-delay-2 {
+    animation-delay: 0.2s;
+  }
+
+  .fade-in-delay-3 {
+    animation-delay: 0.3s;
+  }
+
+  .fade-in-delay-4 {
+    animation-delay: 0.4s;
+  }
+
+  .fade-in-delay-5 {
+    animation-delay: 0.5s;
+  }
+
+  .fade-in-delay-6 {
+    animation-delay: 0.6s;
+  }
+
+  /* Slide-up animation */
+  .slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .fade-in,
+  .slide-up {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Form styles */
+@layer components {
+  .input {
+    @apply w-full px-16 py-12 rounded-lg border-2 border-brand-gray bg-white text-brand-navy placeholder:text-brand-navy/40 focus:outline-none focus:border-brand-navy transition-colors;
+  }
+
+  /* Resize handle for react-resizable */
+  .resize-handle {
+    @apply absolute bottom-0 right-0 w-8 h-8 cursor-se-resize flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-200;
+  }
+
+  /* Override react-resizable default styles */
+  .react-resizable {
+    @apply relative;
+  }
+
+  .react-resizable-handle {
+    @apply absolute;
+  }
+
+  .react-resizable-handle-se {
+    @apply bottom-0 right-0 cursor-se-resize;
+  }
+}
