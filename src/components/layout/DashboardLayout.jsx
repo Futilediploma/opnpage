@@ -38,11 +38,11 @@ export default function DashboardLayout({ children }) {
   }, [darkMode]);
 
   const navItems = [
-    { label: 'Overview', icon: '📊', href: '/sample', active: true },
-    { label: 'Activity', icon: '🔥', href: '/activity', active: false },
-    { label: 'Habits', icon: '✓', href: '/habits', active: false },
-    { label: 'Journal', icon: '📝', href: '/journal', active: false },
-    { label: 'Settings', icon: '⚙️', href: '/settings', active: false },
+    { label: 'Overview', icon: '📊', href: '/sample', active: true, comingSoon: false },
+    { label: 'Activity', icon: '🔥', href: '/activity', active: false, comingSoon: true },
+    { label: 'Habits', icon: '✓', href: '/habits', active: false, comingSoon: true },
+    { label: 'Journal', icon: '📝', href: '/journal', active: false, comingSoon: true },
+    { label: 'Settings', icon: '⚙️', href: '/settings', active: false, comingSoon: true },
   ];
 
   const handleNavClick = (e, href) => {
@@ -96,18 +96,33 @@ export default function DashboardLayout({ children }) {
               <a
                 key={item.label}
                 href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className={`flex items-center gap-4 px-4 py-4 rounded-lg transition-all ${
-                  item.active
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (!item.comingSoon) {
+                    handleNavClick(e, item.href);
+                  }
+                }}
+                className={`flex items-center gap-4 px-4 py-4 rounded-lg transition-all relative ${
+                  item.comingSoon
+                    ? 'opacity-50 cursor-not-allowed text-brand-navy/40 dark:text-brand-text-dark/40'
+                    : item.active
                     ? 'bg-brand-orange text-white shadow-sm'
                     : 'text-brand-navy/60 dark:text-brand-text-dark/60 hover:bg-brand-gray/10 dark:hover:bg-brand-navy-dark hover:text-brand-navy dark:hover:text-brand-text-dark'
                 }`}
                 aria-current={item.active ? 'page' : undefined}
+                aria-disabled={item.comingSoon}
                 title={!sidebarOpen ? item.label : undefined}
               >
                 <span className="text-2xl flex-shrink-0" aria-hidden="true">{item.icon}</span>
                 {sidebarOpen && (
-                  <span className="font-medium text-base">{item.label}</span>
+                  <span className="font-medium text-base flex items-center gap-2">
+                    {item.label}
+                    {item.comingSoon && (
+                      <span className="text-xs bg-brand-gray/30 dark:bg-brand-navy-dark px-2 py-0.5 rounded">
+                        Coming Soon
+                      </span>
+                    )}
+                  </span>
                 )}
               </a>
             ))}
@@ -160,13 +175,14 @@ export default function DashboardLayout({ children }) {
           className="h-28 bg-white dark:bg-brand-gray-dark border-b border-brand-gray/10 dark:border-brand-gray-dark/20 flex items-center justify-between px-10 sticky top-0 z-30 backdrop-blur-sm bg-white/80 dark:bg-brand-gray-dark/80"
           role="banner"
         >
-          {/* Left: Logo */}
-          <div className="flex items-center">
-            <img
-              src="/assets/logo/opnpage_logo.png"
-              alt="opnpage"
-              className="h-32 w-auto"
-            />
+          {/* Left: Home Button */}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => navigate("/")}
+              className="px-4 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 transition-colors font-medium"
+            >
+              Home
+            </button>
           </div>
 
           {/* Right: Controls */}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { navigate } from '../utils/router';
 import DashboardLayout from '../components/layout/DashboardLayout';
 import NoteCard from '../components/ui/NoteCard';
 import DndGrid from '../components/dnd/DndGrid';
