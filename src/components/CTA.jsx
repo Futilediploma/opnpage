@@ -60,7 +60,7 @@ export default function CTA() {
               <textarea
                 value={feedback}
                 onChange={(e) => setFeedback(e.target.value)}
-                placeholder="Please provide any feedback (optional)"
+                placeholder="Please provide any feedback like what you would like to track or see on your dashboard."
                 disabled={status === 'loading' || status === 'success'}
                 rows={4}
                 className="input w-full resize-none"
